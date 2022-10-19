@@ -23,7 +23,7 @@
     </div>
     <div class="form-group">
         <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email" name="email">
+        <input type="text" class="form-control" id="email" name="email"> <!--Должно быть type="email", изменено для наглядности валидации-->
     </div>
     <div class="form-group">
         <label for="pwd">Password:</label>

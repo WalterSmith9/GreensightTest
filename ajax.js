@@ -4,7 +4,7 @@ $("document").ready(function() {
         let serializeFormData = $(this).serialize();
 
         $.ajax({
-            url: '/main.php',
+            url: '/query.php',
             method: 'POST',
             dataType: 'html',
             data: serializeFormData,
