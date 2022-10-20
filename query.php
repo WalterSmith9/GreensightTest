@@ -47,7 +47,7 @@ class user
     }
 }
 
-function isPwdEqual(string $pwd, string $pwd2)
+function isPwdEqual($pwd, $pwd2)
 {
     {
         if ($pwd === $pwd2) {
@@ -74,6 +74,8 @@ $allUsers = [
     ['id'=>3, 'name'=>'Robert', 'email'=>'Rob@rtvi.ru']
 ];
 
+$response = 0;
+
 if (isEmailValid($_POST['email']) and isPwdEqual($_POST['pwd'],$_POST['pwd2'])){
     $newUser = new user($_POST['name'], $_POST['email']);
     $emailMatch = false;
@@ -85,6 +87,25 @@ if (isEmailValid($_POST['email']) and isPwdEqual($_POST['pwd'],$_POST['pwd2'])){
     }
     if ($emailMatch == false){
         array_push($allUsers, ['id'=>count($allUsers)+1, 'name'=>$newUser->getName(), 'email'=>$newUser->getEmail()]);
-        var_dump($allUsers);
+        $log = date('Y-m-d H:i:s') . ' ' . $newUser->getEmail() . ' успешно зарегистрирован';
+        file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
+    }
+    else{
+        $log = date('Y-m-d H:i:s') . ' ' . $newUser->getEmail() . ' уже существует. В регистрации отказано';
+        file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
+        $response = $response + 4;
+
     }
 }
+
+if (isEmailValid($_POST['email'])){
+    $response = $response + 1;
+}
+
+if (isPwdEqual($_POST['pwd'],$_POST['pwd2'])){
+    $response = $response + 2;
+}
+
+echo ($response);
+
+

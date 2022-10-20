@@ -15,25 +15,31 @@
     <form id="register" method="post" onsubmit="return false">
     <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name">
+        <input type="text" class="form-control" id="name" name="name" required>
     </div>
     <div class="form-group">
         <label for="surname">Surname:</label>
-        <input type="text" class="form-control" id="surname" name="surname">
+        <input type="text" class="form-control" id="surname" name="surname" required>
     </div>
     <div class="form-group">
         <label for="email">Email address:</label>
-        <input type="text" class="form-control" id="email" name="email"> <!--Должно быть type="email", изменено для наглядности валидации-->
+        <input type="text" class="form-control" id="email" name="email" required> <!--Должно быть type="email", изменено для наглядности валидации-->
     </div>
     <div class="form-group">
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" name="pwd">
+        <input type="password" class="form-control" id="pwd" name="pwd" required>
     </div>
     <div class="form-group">
         <label for="pwd2">Repeat password:</label>
-        <input type="password" class="form-control" id="pwd2" name="pwd2">
+        <input type="password" class="form-control" id="pwd2" name="pwd2" required>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <div id="success" class="alert-success" style="display: none">
+
+    </div>
+    <div id="error" class="alert-danger" style="display: none">
+
+    </div>
 </body>
 </html>
